@@ -1,6 +1,9 @@
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 using System.IO;
+using Microsoft.VisualBasic.FileIO;
 
 public class Journal
 {
@@ -17,7 +20,7 @@ public class Journal
     public void AddEntry()
     {
         Entry entry = new Entry();
-        //entry.entryNum = (_entries.Count()).ToString();
+        entry.entryNum = (_entries.Count() + 1).ToString();
         PromptGenerator prompt = new PromptGenerator();
         DateTime CurrentTime = DateTime.Now;
         entry.date = CurrentTime.ToShortDateString();
@@ -37,8 +40,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                writeToFile.WriteLine($"{entry.date}…{entry.prompt}…{entry.reponse}");
-                //writeToFile.WriteLine($"{entry.entryNum}…{entry.date}…{entry.prompt}…{entry.reponse}");
+                writeToFile.WriteLine($"{entry.entryNum}…{entry.date}…{entry.prompt}…{entry.reponse}");
             }
         }
     }
@@ -57,31 +59,49 @@ public class Journal
 
             string[] parts = line.Split("…");
 
-            //entry.entryNum = parts[0];
-            entry.date = parts[0];
-            entry.prompt = parts[1];
-            entry.reponse = parts[2];
+            entry.entryNum = parts[0];
+            entry.date = parts[1];
+            entry.prompt = parts[2];
+            entry.reponse = parts[3];
 
             _entries.Add(entry);
         }
     }
 
-    //public void DeleteEntryOrSave()
-    //{
-    //    Console.WriteLine("1. Delete a entry");
-    //    Console.WriteLine("2. Delete save");
-    //    Console.WriteLine("3. Clear entries");
-    //
-    //    string choice = Console.ReadLine();
-    //
-    //    if (choice == "1")
-    //    {
-    //        Console.WriteLine("Please enter the entry number you wish to delete.");
-    //        
-    //        foreach (Entry entry in _entries)
-    //        {
-    //            entry.DisplayEntry();
-    //        }
-    //    }
-    //}
+    public void DeleteEntriesOrSave()
+    {
+        Console.WriteLine("1. Delete save");
+        Console.WriteLine("2. Clear current entries");
+    
+        string choice = Console.ReadLine();
+    
+        if (choice == "1")
+        {
+            Console.WriteLine("Enter a filename save to remove: ");
+            string filename = Console.ReadLine();
+
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+                Console.WriteLine("Delete successful.");
+            }
+            else
+            {
+                Console.WriteLine($"Couldn't find {filename}. Exiting to main menu . . .");
+            }
+        }
+        else if (choice == "2")
+        {
+            Console.WriteLine("1. Confirm erase of current entries");
+            Console.WriteLine("2. Exit to main menu");
+            choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                _entries.Clear();
+                Console.WriteLine("Sucessfully removed all entries");
+            }
+            Console.WriteLine("Exiting to main menu. . .");
+        }
+    }
 }

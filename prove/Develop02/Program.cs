@@ -12,15 +12,15 @@ class Program
 
         Console.WriteLine("Welcome to the Journal Age!");
 
-        while (choice != "5")
+        while (choice != "6")
         {
             Console.WriteLine("\nPlease select one of the following choices: ");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
-            //Console.WriteLine("5. Delete");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("5. Delete");
+            Console.WriteLine("6. Quit");
             Console.Write("What would you like to do? ");
             choice = Console.ReadLine();
 
@@ -40,9 +40,9 @@ class Program
             {
                 journal.SaveToFile();
             }
-            //else if (choice == "5")
+            else if (choice == "5")
             {
-                //journal.DeleteEntryOrSave();
+                journal.DeleteEntriesOrSave();
             }
         }
     }
