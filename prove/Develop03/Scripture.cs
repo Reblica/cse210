@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Concurrent;
-using System.ComponentModel.DataAnnotations;
-using System.Data.SqlTypes;
-using System.Security.Cryptography.X509Certificates;
-
 public class Scripture
 {
     private bool _allHidden;

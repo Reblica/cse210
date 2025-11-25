@@ -1,7 +1,3 @@
-using System;
-using System.Diagnostics.Contracts;
-using System.Runtime.CompilerServices;
-
 public class Word
 {
     private string _singleWord;
