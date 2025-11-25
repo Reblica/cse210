@@ -36,13 +36,13 @@ public class Journal
         Console.WriteLine("Please enter a filename to save your journal: ");
         string filename = Console.ReadLine();
 
-        using (StreamWriter writeToFile = new StreamWriter(filename))
+        StreamWriter writeToFile = new StreamWriter(filename);
+
+        foreach (Entry entry in _entries)
         {
-            foreach (Entry entry in _entries)
-            {
-                writeToFile.WriteLine($"{entry.entryNum}…{entry.date}…{entry.prompt}…{entry.reponse}");
-            }
+            writeToFile.WriteLine($"{entry.entryNum}…{entry.date}…{entry.prompt}…{entry.reponse}");
         }
+        
     }
 
     public void LoadToFile()
