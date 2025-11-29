@@ -43,8 +43,9 @@ class Program
             }
         }
         Console.WriteLine($"You have completed the following activities:");
-        Console.WriteLine($"Breathing Activity: {b_Activity}");
-        Console.WriteLine($"Reflecting Activity: {r_Activity}");
-        Console.WriteLine($"Listing Activity: {l_Activity}");
+        Console.WriteLine();
+        Console.WriteLine($"Breathing Activity: {b_Activity} times");
+        Console.WriteLine($"Reflecting Activity: {r_Activity} times");
+        Console.WriteLine($"Listing Activity: {l_Activity} times");
     }
 }

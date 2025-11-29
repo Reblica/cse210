@@ -1,6 +1,6 @@
 public class ListingActivity : Activity
 {
-    private Random ran = new Random();
+    private Random _ran = new Random();
     private List<string> _prompts = new List<string>();
     private List<string> _userList = new List<string>();
 
@@ -24,7 +24,7 @@ public class ListingActivity : Activity
     }
     public string GetRandomPrompt()
     {
-        int randomNumber = ran.Next(0, _prompts.Count);
+        int randomNumber = _ran.Next(0, _prompts.Count);
         return _prompts[randomNumber];
     }
     public void DisplayPrompt()
@@ -40,6 +40,8 @@ public class ListingActivity : Activity
 
         Console.WriteLine();
         Console.WriteLine();
+
+        PauseWithSpinner(1);
         Console.Write($"You may begin in: ");
         PauseWithTimer(5);
         Console.WriteLine();

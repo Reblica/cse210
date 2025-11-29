@@ -34,11 +34,7 @@ public class Activity
     public void RunActivity()
     {
         Console.Write("Get ready");
-        for (int i = 0; i < 3; i++)
-        {
-            Console.Write(".");
-            Thread.Sleep(500);
-        }
+        DisplayStringsAsCharacters("...");
         Console.WriteLine();
         PauseWithSpinner(3);
         Console.WriteLine();
@@ -75,7 +71,7 @@ public class Activity
         foreach (char a in given)
         {
             Console.Write(a);
-            Thread.Sleep(700);
+            Thread.Sleep(600);
         }
     }
     public void RenderEndMessage()

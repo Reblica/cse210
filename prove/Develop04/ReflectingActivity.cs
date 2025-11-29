@@ -1,6 +1,6 @@
 public class ReflectingActivity : Activity
 {
-    private Random ran = new Random();
+    private Random _ran = new Random();
     private List<string> _prompts = new List<string>();
     private List<string> _questions = new List<string>();
 
@@ -35,12 +35,12 @@ public class ReflectingActivity : Activity
     }
     public string GetRandomPrompt()
     {
-        int randomNumber = ran.Next(0, _prompts.Count);
+        int randomNumber = _ran.Next(0, _prompts.Count);
         return _prompts[randomNumber];
     }
     public string GetRandomQuestion()
     {
-        int randomNumber = ran.Next(0, _questions.Count);
+        int randomNumber = _ran.Next(0, _questions.Count);
         return _questions[randomNumber];
     }
     public void DisplayAPrompt()
@@ -61,6 +61,7 @@ public class ReflectingActivity : Activity
         Console.WriteLine("When you have something in mind, press enter to continue.");
         string input = Console.ReadLine();
         Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
+        PauseWithSpinner(1);
         Console.Write($"You may begin in: ");
         PauseWithTimer(5);
         Console.Clear();
