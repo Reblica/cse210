@@ -20,15 +20,15 @@ public class Journal
     public void AddEntry()
     {
         Entry entry = new Entry();
-        entry.entryNum = (_entries.Count() + 1).ToString();
+        entry._entryNum = (_entries.Count() + 1).ToString();
         PromptGenerator prompt = new PromptGenerator();
         DateTime CurrentTime = DateTime.Now;
-        entry.date = CurrentTime.ToShortDateString();
-        entry.prompt = prompt.GetRandomPrompt();
-        Console.WriteLine(entry.prompt);
+        entry._date = CurrentTime.ToShortDateString();
+        entry._prompt = prompt.GetRandomPrompt();
+        Console.WriteLine(entry._prompt);
         Console.WriteLine();
         string response = Console.ReadLine();
-        entry.reponse = response;
+        entry._reponse = response;
         _entries.Add(entry);
     }
     public void SaveToFile()
@@ -40,7 +40,7 @@ public class Journal
 
         foreach (Entry entry in _entries)
         {
-            writeToFile.WriteLine($"{entry.entryNum}…{entry.date}…{entry.prompt}…{entry.reponse}");
+            writeToFile.WriteLine($"{entry._entryNum}…{entry._date}…{entry._prompt}…{entry._reponse}");
         }
         
     }
@@ -59,10 +59,10 @@ public class Journal
 
             string[] parts = line.Split("…");
 
-            entry.entryNum = parts[0];
-            entry.date = parts[1];
-            entry.prompt = parts[2];
-            entry.reponse = parts[3];
+            entry._entryNum = parts[0];
+            entry._date = parts[1];
+            entry._prompt = parts[2];
+            entry._reponse = parts[3];
 
             _entries.Add(entry);
         }
