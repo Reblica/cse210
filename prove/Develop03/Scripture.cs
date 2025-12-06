@@ -1,7 +1,7 @@
 public class Scripture
 {
     private bool _allHidden;
-    private Reference references;
+    private Reference _references;
     private List<Word> _words = new List<Word>();
     private Random _random = new Random();
 
@@ -18,7 +18,7 @@ public class Scripture
             string book = ofReference[0];
             int chapter = int.Parse(ofReference[1]);
             int verse = int.Parse(ofReference[2]);
-            references = new Reference(book, chapter, verse);
+            _references = new Reference(book, chapter, verse);
         }
         else if (ofReference.Length == 4)
         {
@@ -26,7 +26,7 @@ public class Scripture
             int chapter = int.Parse(ofReference[1]);
             int verse = int.Parse(ofReference[2]);
             int endVerse = int.Parse(ofReference[3]);
-            references = new Reference(book, chapter, verse, endVerse);
+            _references = new Reference(book, chapter, verse, endVerse);
         }
 
         string[] words = text.Split(" ");
@@ -95,10 +95,10 @@ public class Scripture
     {
         Console.Clear();
 
-        string book = references.GetBook();
-        int chapter = references.GetChapter();
-        int verse = references.GetVerse();
-        int endVerse = references.GetEndVerse();
+        string book = _references.GetBook();
+        int chapter = _references.GetChapter();
+        int verse = _references.GetVerse();
+        int endVerse = _references.GetEndVerse();
 
         if (endVerse == 0)
         {
