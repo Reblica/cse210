@@ -1,0 +1,3 @@
+SimpleGoal…Run…Run for at least 15 minutes…20…false
+EternalGoal…Read scriptures…Read for at least 15 minutes a day…10…10
+ChecklistGoal…Temple…Go to the Temple 3 times this month…50…500…3…0…0
