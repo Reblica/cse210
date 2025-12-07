@@ -3,7 +3,7 @@ class Program
     static void Main(string[] args)
     {
         SelectionMenu _selectionMenu = new SelectionMenu();
-        TrophyRoom trophyRoom = new TrophyRoom();
+        TrophyRoom _trophyRoom = new TrophyRoom();
         List<Goal> _goals = new List<Goal>();
         LoadOrSaveFile _loadOrSaveFile = new LoadOrSaveFile();
         string choice = "";
@@ -17,7 +17,7 @@ class Program
                 totalPoints += goal.GetPoints();
             }
             Console.WriteLine($"You have {totalPoints} points!");
-            trophyRoom.HasReachedNextReward(totalPoints);
+            _trophyRoom.HasReachedNextReward(totalPoints);
             Console.WriteLine();
 
             Console.WriteLine("Menu Options:");
@@ -88,7 +88,7 @@ class Program
             }
             else if (choice == "6")
             {
-                trophyRoom.DisplayTrophies();
+                _trophyRoom.DisplayTrophies();
                 Console.Clear();
             }
         }
