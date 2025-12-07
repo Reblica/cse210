@@ -3,12 +3,13 @@ class Program
     static void Main(string[] args)
     {
         SelectionMenu _selectionMenu = new SelectionMenu();
+        TrophyRoom trophyRoom = new TrophyRoom();
         List<Goal> _goals = new List<Goal>();
         LoadOrSaveFile _loadOrSaveFile = new LoadOrSaveFile();
         string choice = "";
         Console.Clear();
 
-        while (choice != "6") // Repeats the main menu until user inputs '6'
+        while (choice != "7") // Repeats the main menu until user inputs '7'
         {
             int totalPoints = 0;
             foreach (Goal goal in _goals)
@@ -16,6 +17,7 @@ class Program
                 totalPoints += goal.GetPoints();
             }
             Console.WriteLine($"You have {totalPoints} points!");
+            trophyRoom.HasReachedNextReward(totalPoints);
             Console.WriteLine();
 
             Console.WriteLine("Menu Options:");
@@ -24,7 +26,8 @@ class Program
             Console.WriteLine("  3. Save Goals");
             Console.WriteLine("  4. Load Goals");
             Console.WriteLine("  5. Record Event");
-            Console.WriteLine("  6. Quit");
+            Console.WriteLine("  6. Trophy Room");
+            Console.WriteLine("  7. Quit");
 
             Console.Write("Please select one of the choices above: ");
             choice = Console.ReadLine();
@@ -37,10 +40,12 @@ class Program
             }
             else if (choice == "2") // Displays the current goal(s)
             {
+                Console.Clear();
                 _selectionMenu.ListGoals(_goals);
             }
             else if (choice == "3" || choice == "4")
             {
+                Console.Clear();
                 Console.Write("Please enter the filename for the goal file: ");
                 string filename = Console.ReadLine();
 
@@ -71,6 +76,7 @@ class Program
                             _goals.Add(new ChecklistGoal(fileGoal));
                         }
                     }
+                    Console.Clear();
                 }
             }
             else if (choice == "5") // Completes a goal specified by the user
@@ -78,6 +84,11 @@ class Program
                 int goalType = _selectionMenu.CheckOffGoal(_goals);
                 _goals[goalType - 1].RecordEvent();
 
+                Console.Clear();
+            }
+            else if (choice == "6")
+            {
+                trophyRoom.DisplayTrophies();
                 Console.Clear();
             }
         }

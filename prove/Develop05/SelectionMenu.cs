@@ -37,16 +37,20 @@ public class SelectionMenu
     }
     public int CheckOffGoal(List<Goal> goals)
     {
-        Console.Clear();
-        int i = 0;
-        Console.WriteLine("The goals are:");
-        foreach (Goal goal in goals)
+        int goalType = -1;
+        while (goalType < 1 || goalType > goals.Count)
         {
-            i++;
-            Console.WriteLine($"{i} {goal.GetName()}");
+            Console.Clear();
+            int i = 0;
+            Console.WriteLine("The goals are:");
+            foreach (Goal goal in goals)
+            {
+                i++;
+                Console.WriteLine($"{i} {goal.GetName()}");
+            }
+            Console.Write("Which goal did you complete? ");
+            goalType = int.Parse(Console.ReadLine());
         }
-        Console.Write("Which goal did you complete? ");
-        int goalType = int.Parse(Console.ReadLine());
         
         return goalType;
     }
