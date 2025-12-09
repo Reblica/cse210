@@ -80,6 +80,6 @@ public class ChecklistGoal : Goal
     }
     public override string SaveGoal()
     {
-        return $"{GetName()}…{GetDescription()}…{GetAwardedPoints()}…{_bonusPoints}…{_requiredCompletion}…{_currentCompleted}…{_isCompleted}…{GetPoints()}";
+        return $"{GetName()}…{GetDescription()}…{GetAwardedPoints()}…{_bonusPoints}…{_requiredCompletion}…{_currentCompleted}…{GetPoints()}";
     }
 }

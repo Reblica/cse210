@@ -8,6 +8,7 @@ public class LoadOrSaveFile
         {
             writeToFile.WriteLine($"{goal.ToString()}…{goal.SaveGoal()}");
         }
+        writeToFile.Close();
     }
 
     public string[] LoadToFile(string filename)
