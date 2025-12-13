@@ -3,7 +3,7 @@ public class Video
     private string _title;
     private string _creator;
     private int _length;
-    private List<Comment> comments = new List<Comment>();
+    private List<Comment> _comments = new List<Comment>();
 
     public Video(string title, string creator, int length)
     {
@@ -27,11 +27,11 @@ public class Video
     public void AddComment(string text, string commenter)
     {
         Comment comment = new Comment(text, commenter);
-        comments.Add(comment);
+        _comments.Add(comment);
     }
     public void DisplayComments()
     {
-        foreach (Comment comment in comments)
+        foreach (Comment comment in _comments)
         {
             Console.Write(" - ");
             Console.WriteLine($"From: {comment.GetCommenter()}\n   • '{comment.GetText()}'"); 
@@ -39,6 +39,6 @@ public class Video
     }
     public int GetTotalComments()
     {
-        return comments.Count;
+        return _comments.Count;
     }
 }
