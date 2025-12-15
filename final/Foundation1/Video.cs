@@ -1,9 +1,9 @@
 public class Video
 {
-    private string _title;
-    private string _creator;
-    private int _length;
-    private List<Comment> _comments = new List<Comment>();
+    public string _title;
+    public string _creator;
+    public int _length;
+    public List<Comment> _comments = new List<Comment>();
 
     public Video(string title, string creator, int length)
     {
@@ -11,31 +11,13 @@ public class Video
         _creator = creator;
         _length = length;
     }
-
-    public string GetTitle()
-    {
-        return _title;
-    }
-    public string GetCreator()
-    {
-        return _creator;
-    }
-    public int GetLength()
-    {
-        return _length;
-    }
+    
     public void AddComment(string text, string commenter)
     {
-        Comment comment = new Comment(text, commenter);
+        Comment comment = new Comment();
+        comment._text = text;
+        comment._commenter = commenter;
         _comments.Add(comment);
-    }
-    public void DisplayComments()
-    {
-        foreach (Comment comment in _comments)
-        {
-            Console.Write(" - ");
-            Console.WriteLine($"From: {comment.GetCommenter()}\n   • '{comment.GetText()}'"); 
-        }
     }
     public int GetTotalComments()
     {

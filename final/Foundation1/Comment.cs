@@ -1,20 +1,14 @@
 public class Comment
 {
-    private string _text;
-    private string _commenter;
+    public string _text;
+    public string _commenter;
 
-    public Comment(string text, string commenter)
+    public Comment()
     {
-        _text = text;
-        _commenter = commenter;
     }
 
-    public string GetText()
+    public string DisplayComment()
     {
-        return _text;
-    }
-    public string GetCommenter()
-    {
-        return _commenter;
+        return $" - From: {_commenter}\n   • '{_text}'"; 
     }
 }
