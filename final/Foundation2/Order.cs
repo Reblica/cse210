@@ -42,7 +42,7 @@ public class Order
         string product = "";
         foreach (Product p in _products)
         {
-            product += p.GetProduct();
+            product += $" - {p.GetProduct()}";
         }
         return product;
     }
