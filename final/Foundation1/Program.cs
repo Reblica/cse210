@@ -26,15 +26,12 @@ class Program
 
         foreach (Video video in videos)
         { 
-            Console.WriteLine($"Video {video._title}");
-            Console.WriteLine($"By: {video._creator}");
-            Console.WriteLine($"Length: {video._length} seconds");
-            Console.WriteLine();
-            Console.WriteLine($"Comments: {video.GetTotalComments()}");
+            Console.WriteLine($"{video._title}, {video._creator}, {video._length}, {video.GetTotalComments()}");
             Console.WriteLine();
             foreach (Comment comment in video._comments)
             {
-                comment.DisplayComment();
+                Console.WriteLine(comment.DisplayComment());
+                Console.WriteLine();
             }
             Console.WriteLine();
         }
